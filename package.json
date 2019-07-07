@@ -1,0 +1,19 @@
+{
+  "name": "ruuvi-collector",
+  "version": "1.0.0",
+  "description": "ruuvi-tag data collector",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hamalaiv/ruuvi-collector.git"
+  },
+  "author": "hamalaiv",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hamalaiv/ruuvi-collector/issues"
+  },
+  "homepage": "https://github.com/hamalaiv/ruuvi-collector#readme"
+}
