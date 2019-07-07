@@ -12,42 +12,45 @@ class RuuviSimulator extends EventEmitter {
 
     constructor(){
         super();
-        this.run();
-    }
-
-    run(){
-        let ruuviTag = new RuuviTag({
+        this.ruuviTag = new RuuviTag({
             id: "simulator",
         });
+        this._start();
+    }
 
+    _start(){
         setTimeout(() => {
-            this.emit("found", ruuviTag);
-            setTimeout(() => {
-                ruuviTag.emit("updated", this.generateData(3));
-                this.run();
-            }, 1000);
+            this.emit("found", this.ruuviTag);
+            this._updateLoop();
         }, 100);
     }
 
-    generateData(dataFormat){
+    _updateLoop(){
+        setTimeout(() => {
+            this.ruuviTag.emit("updated", this._generateData(3));
+            this._updateLoop();
+        }, 1000);
+    }
+
+    _generateData(dataFormat){
         return {
             "dataFormat": dataFormat,
-            "rssi": -70 + this.randomInt(10),
-            "humidity": 40 + this.random(10),
-            "temperature": 18 + this.random(7),
-            "pressure": 99400 + this.randomInt(100),
-            "accelerationX": -1000 + this.randomInt(100),
-            "accelerationY": -50 + this.randomInt(100),
-            "accelerationZ": 900 + this.randomInt(100),
-            "battery": 3000 + this.randomInt(200)
+            "rssi": -70 + this._randomInt(10),
+            "humidity": 40 + this._random(10),
+            "temperature": 18 + this._random(7),
+            "pressure": 99400 + this._randomInt(100),
+            "accelerationX": -1000 + this._randomInt(100),
+            "accelerationY": -50 + this._randomInt(100),
+            "accelerationZ": 900 + this._randomInt(100),
+            "battery": 3000 + this._randomInt(200)
         }
     }
 
-    random(max){
+    _random(max){
         return Math.random() * max;
     }
 
-    randomInt(max){
+    _randomInt(max){
         return Math.floor(Math.random() * Math.floor(max));
     }
 };

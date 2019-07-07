@@ -17,8 +17,7 @@ ruuvi.on('found', tag => {
         data.timestamp = now;
         
         // log to console
-        // console.log(JSON.stringify(data, null, '\t'));
-        console.log(JSON.stringify(data, null, " "));
+        console.log(JSON.stringify(data, null, '\t'));
         
         // store to file
         rcfs.store(data, now);
