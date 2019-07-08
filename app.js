@@ -29,7 +29,7 @@ ruuvi.on('found', tag => {
 
 async function start() {
     // wait for ruuvi-tag to be found
-    await sleep(10000);
+    await sleep(60000);
 
     // did not find ruuvi-tag,
     // exit with failed status
