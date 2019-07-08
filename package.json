@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/hamalaiv/ruuvi-collector#readme",
   "dependencies": {
+    "moment": "^2.24.0",
     "node-ruuvitag": "^4.1.0"
   }
 }
