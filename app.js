@@ -1,4 +1,5 @@
 const os = require("os");
+const moment = require("moment");
 const log = require("./log.js");
 const rcfs = require("./rc-fs.js");
 
@@ -9,7 +10,7 @@ const ruuvi = os.type() == "Windows_NT" ?
 ruuvi.on('found', tag => {
     log.d(`found [${tag.id}]`);
     tag.on('updated', async data => {
-        let now = new Date().toISOString();
+        let now = moment().toISOString();
 
         // add more fields to data object
         data.id = tag.id;

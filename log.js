@@ -1,3 +1,5 @@
+const moment = require("moment");
+
 class Log {
     d(message){
         console.log(`${this._getDateTime()} ${message}`);
@@ -8,8 +10,7 @@ class Log {
     }
 
     _getDateTime(){
-        let now = new Date();
-        return `${now.getDate()}.${now.getMonth()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+        return moment().format("DD.MM HH:mm:ss");
     }
 }
 
