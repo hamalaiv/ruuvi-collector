@@ -7,6 +7,7 @@
 const fs = require("fs");
 const fsPromises = fs.promises;
 var path = require('path');
+const log = require("./log.js");
 
 class RCFS{
     
@@ -29,7 +30,7 @@ class RCFS{
                 await fsPromises.mkdir(this.baseFolder);
             }
             catch(error){
-                console.error(`Error RCFS._ensureFolderExists: ${error}`);
+                log.e(`Error RCFS._ensureFolderExists: ${error}`);
                 return false;
             }
         }
@@ -43,7 +44,7 @@ class RCFS{
             await fsPromises.appendFile(filePath, entry);
         }
         catch(error){
-            console.error(`Error RCFS._writeToFile: ${error}`);
+            log.e(`Error RCFS._writeToFile: ${error}`);
             return false;
         }
 

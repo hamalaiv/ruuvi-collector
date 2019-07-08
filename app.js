@@ -1,4 +1,5 @@
 const os = require("os");
+const log = require("./log.js");
 const rcfs = require("./rc-fs.js");
 
 const ruuvi = os.type() == "Windows_NT" ?
@@ -6,7 +7,7 @@ const ruuvi = os.type() == "Windows_NT" ?
                             require("node-ruuvitag");
 
 ruuvi.on('found', tag => {
-    console.log(`found [${tag.id}]`);
+    log.d(`found [${tag.id}]`);
     tag.on('updated', async data => {
         let now = new Date().toISOString();
 
@@ -15,7 +16,7 @@ ruuvi.on('found', tag => {
         data.timestamp = now;
 
         // log to console
-        console.log(`updated [${tag.id}] rssi=${data.rssi}, humd=${data.humidity.toFixed(2)}, temp=${data.temperature.toFixed(2)}, pres=${data.pressure}, accX=${data.accelerationX}, accY=${data.accelerationY}, accZ=${data.accelerationZ}, batt=${data.battery}`);
+        log.d(`updated [${tag.id}] rssi=${data.rssi}, humd=${data.humidity.toFixed(2)}, temp=${data.temperature.toFixed(2)}, pres=${data.pressure}, accX=${data.accelerationX}, accY=${data.accelerationY}, accZ=${data.accelerationZ}, batt=${data.battery}`);
 
         // store to file
         await rcfs.store(data, now);
