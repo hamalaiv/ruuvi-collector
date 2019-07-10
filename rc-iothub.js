@@ -6,7 +6,8 @@ class RCIotHub{
     
     constructor(){
         this._connectionStrings = {
-            "simulator001": process.env.CONNECTION_STRING_SIMULATOR001
+            "simulator001": process.env.CONNECTION_STRING_SIMULATOR001,
+            "fa8bd1591d98": process.env.CONNECTION_STRING_FA8BD1591D98
         };
     }
 
