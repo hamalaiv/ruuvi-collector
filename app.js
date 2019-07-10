@@ -9,9 +9,18 @@ const ruuvi = os.type() == "Windows_NT" ?
                             require("./ruuvi-simulator.js") :
                             require("node-ruuvitag");
 
+let updatedTags = {};
+
 ruuvi.on('found', tag => {
     log.d(`found [${tag.id}]`);
     tag.on('updated', async data => {
+        if(updatedTags[tag.id]){
+            // do not process data from already updated tag
+            return;
+        }
+
+        updatedTags[tag.id] = true;
+
         let now = moment().toISOString();
 
         // add more fields to data object
