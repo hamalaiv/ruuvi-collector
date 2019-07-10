@@ -1,7 +1,9 @@
+require("dotenv").config();
 const os = require("os");
 const moment = require("moment");
 const log = require("./log.js");
 const rcfs = require("./rc-fs.js");
+const rcIothub = require("./rc-iothub");
 
 const ruuvi = os.type() == "Windows_NT" ?
                             require("./ruuvi-simulator.js") :
@@ -21,6 +23,9 @@ ruuvi.on('found', tag => {
 
         // store to file
         await rcfs.store(data, now);
+
+        // send to iot hub
+        await rcIothub.sendData(data);
 
         // data processed, can exit now succesfully
         process.exit();
