@@ -13,7 +13,7 @@ class RuuviSimulator extends EventEmitter {
     constructor(){
         super();
         this.ruuviTag = new RuuviTag({
-            id: "simulator",
+            id: "simulator001",
         });
         this._start();
     }
