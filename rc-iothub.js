@@ -21,17 +21,14 @@ class RCIotHub{
 
             var client = clientFromConnectionString(connectionString);
             let message = new Message(JSON.stringify(data));
-            client.sendEvent(message, (err, res) => {
+            client.sendEvent(message, err => {
                 if(err){
                     log.e(`Error sending iothub event: ${err}`);
                     resolve(false);
                     return;
                 }
                 
-                if(res){
-                    log.d(`iothub sendEvent status: ${res.statusCode} ${res.statusMessage}`);
-                    resolve(true);
-                }
+                resolve(true);
             });
         });
     }
