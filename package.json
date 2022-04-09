@@ -21,7 +21,7 @@
     "azure-iot-device": "^1.9.9",
     "azure-iot-device-http": "^1.9.9",
     "dotenv": "^8.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "node-ruuvitag": "^4.1.0"
   }
 }
